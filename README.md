@@ -168,4 +168,5 @@ git push origin feature/your-feature-name
 
 ## License
 
-This project is distributed under the MIT License. See the `LICENSE` file for details.
+This project is licensed under the MIT License.
+See the [LICENSE](LICENSE) file for details.

@@ -124,7 +124,20 @@ Recommended regression metrics include:
 - **Root Mean Squared Error (RMSE):** Penalizes larger prediction errors more heavily.
 - **R² score:** Measures the model's fit relative to a baseline predictor.
 
-Actual performance metrics should be added here after evaluating the existing model. Do not report unverified accuracy claims.
+Run `python training/run_prediction_experiments.py` from the repository root to reproduce the comparison below. It builds every feature from earlier innings only and validates with 5 chronological folds, so each model is tested on matches that come after its training data.
+
+| Model | MAE | RMSE | R² |
+|---|---|---|---|
+| Mean of previous innings (baseline) | 37.50 (±3.72) | 45.04 | -0.049 |
+| Existing model: Linear Regression | 38.03 (±4.03) | 45.94 | -0.091 |
+| Linear Regression (all features) | 40.81 (±3.42) | 49.08 | -0.248 |
+| Ridge Regression | 37.63 (±3.68) | 45.09 | -0.051 |
+| Random Forest | 39.02 (±4.32) | 47.29 | -0.157 |
+| Gradient Boosting | 41.30 (±4.34) | 51.06 | -0.351 |
+
+MAE is the mean across folds, with the fold standard deviation in brackets. The validation covers 297 innings.
+
+None of the candidate models beat the baseline on this dataset. The script therefore saves the baseline to `training/artifacts/best_model.joblib`. Its R² is negative, so the current features do not explain the match-to-match variation in runs. Predictions should not be treated as reliable estimates of an individual innings.
 
 ## Contributing
 

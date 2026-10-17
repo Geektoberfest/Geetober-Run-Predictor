@@ -104,15 +104,21 @@ Inspect the available scripts or notebooks in that directory and execute the app
 
 ### Streamlit Interface
 
-The interactive Streamlit interface is planned for a future contribution.
+The Streamlit app lets you enter an opposition, ground, batting position, and innings and see the predicted runs. It uses the saved model and the same preprocessing as the training script.
 
-Once `app.py` has been implemented, the intended launch command is:
+The app needs the saved model at `training/artifacts/best_model.joblib`. Create it first by running the training script from the repository root:
+
+```bash
+python training/run_prediction_experiments.py
+```
+
+Then start the app from the repository root:
 
 ```bash
 streamlit run app.py
 ```
 
-Until then, the command may not produce a functional application.
+Open the URL that Streamlit prints, usually `http://localhost:8501`. If the model file is missing, the app shows the command to create it.
 
 ## Model Evaluation
 
